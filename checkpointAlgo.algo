@@ -3,7 +3,7 @@ VAR
     nmbrChar:integer:=0 
     nmbrWord: integer:=0
     nmbrVowels:integer:=0
-    chaine: String
+    chaine: String[100]
     i:integer:=0
 
 BEGIN
