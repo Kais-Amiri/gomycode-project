@@ -1,0 +1,28 @@
+ALGORITHM 
+VAR
+    nmbrChar:integer:=0 
+    nmbrWord: integer:=0
+    nmbrVowels:integer:=0
+    chaine: String
+    i:integer:=0
+
+BEGIN
+    WHILE (chaine[i]<>".") DO
+        nmbrChar :=nmbrChar +1; 
+
+        IF (chaine[i]=" ") THEN
+            nmbrWord :=nmbrWord +1;
+        END_IF
+
+        IF (chaine[i] in {A, E, I, O, U, Y, a, e, i, o, u, y}) THEN
+            nmbrVowels :=nmbrVowels +1
+        END_IF
+        i:= i+1
+
+    END_WHILE
+
+    write("number of characters :" nmbrChar)
+    write("number of words :" nmbrWord)
+    write("number of vowels:" nmbrVowels)
+
+END
