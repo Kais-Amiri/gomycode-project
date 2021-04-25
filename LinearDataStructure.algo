@@ -1,3 +1,6 @@
+
+/*-----------------------------------problem 1 : using array------------------------------------------------*/
+
 ALGORITHM sumDistinctElement
 VAR
     Set1, Set2, maxTab, minTab : ARRAY_OF FLOAT[50];
@@ -16,6 +19,36 @@ BEGIN
     FOR i FROM 0 TO maxTab.length STEP 1  DO
         FOR j FROM 0 TO minTab.length STEP 1  DO
             IF (maxTab[i]<>minTab[j]) THEN
+                sum:= sum + maxTab[i];
+            END_IF
+        END_FOR
+    
+    END_FOR
+
+    write("sum fo distinct element : " sum)
+END
+
+
+/*----------------------------------- problem- 2 : using array------------------------------------------------*/
+
+ALGORITHM sumSharedElement
+VAR
+    Set1, Set2, maxTab, minTab : ARRAY_OF FLOAT[50];
+    sum: float :=0;
+    i: integer:=0;
+BEGIN
+    IF (Set1.length < Set2.length) THEN
+        maxTab := Set2;
+        minTab := Set1;
+    ELSE
+        maxTab := Set1;
+        minTab := Set2;
+
+    END_IF
+
+    FOR i FROM 0 TO maxTab.length STEP 1  DO
+        FOR j FROM 0 TO minTab.length STEP 1  DO
+            IF (maxTab[i]==minTab[j]) THEN
                 sum:= sum + maxTab[i];
             END_IF
         END_FOR
