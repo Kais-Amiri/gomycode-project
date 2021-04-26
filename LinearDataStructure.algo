@@ -34,8 +34,7 @@ END
 
 ALGORITHM sumDistinctElement
 VAR
-    Set1: HASH_TABLE<integer,integer>
-    Set2: HASH_TABLE<integer,integer>
+    Set1, Set2, maxTab, minTab: HASH_TABLE<integer,integer>
     sum : integer :=0
 
 BEGIN
@@ -90,8 +89,7 @@ END
 
 ALGORITHM sumDistinctElement
 VAR
-    Set1: HASH_TABLE<integer,integer>
-    Set2: HASH_TABLE<integer,integer>
+    Set1, Set2, maxTab, minTab: HASH_TABLE<integer,integer>
     sum : integer :=0
 
 BEGIN
