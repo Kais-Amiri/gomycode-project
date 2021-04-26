@@ -29,6 +29,33 @@ BEGIN
 END
 
 
+
+/*-----------------------------------problem 1 : using hash table------------------------------------------------*/
+
+ALGORITHM sumDistinctElement
+VAR
+    Set1: HASH_TABLE<integer,integer>
+    Set2: HASH_TABLE<integer,integer>
+    sum : integer :=0
+
+BEGIN
+ IF (Set1.length < Set2.length) THEN
+        maxTab := Set2;
+        minTab := Set1;
+    ELSE
+        maxTab := Set1;
+        minTab := Set2;
+
+FOR i FROM 0 TO maxTab.length STEP 1  DO
+    WHILE (minTab.lookup(maxTab[i])==true && minTab.lookup(maxTab[i])<> undefined) DO
+     sum := sum + maxTab[i]; 
+
+     END_WHILE
+END_FOR
+write (sum);
+  
+END
+
 /*----------------------------------- problem- 2 : using array------------------------------------------------*/
 
 ALGORITHM sumSharedElement
@@ -57,3 +84,31 @@ BEGIN
 
     write("sum fo distinct element : " sum)
 END
+
+
+/*-----------------------------------problem 2 : using hash table------------------------------------------------*/
+
+ALGORITHM sumDistinctElement
+VAR
+    Set1: HASH_TABLE<integer,integer>
+    Set2: HASH_TABLE<integer,integer>
+    sum : integer :=0
+
+BEGIN
+ IF (Set1.length < Set2.length) THEN
+        maxTab := Set2;
+        minTab := Set1;
+    ELSE
+        maxTab := Set1;
+        minTab := Set2;
+
+FOR i FROM 0 TO maxTab.length STEP 1  DO
+    WHILE (minTab.lookup(maxTab[i])==false && minTab.lookup(maxTab[i])<> undefined) DO
+     sum := sum + maxTab[i]; 
+
+     END_WHILE
+END_FOR
+write (sum);
+  
+END
+
