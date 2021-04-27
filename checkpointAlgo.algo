@@ -8,7 +8,7 @@ VAR
 
 BEGIN
     WHILE (chaine[i]<>".") DO
-        nmbrChar :=nmbrChar +1; 
+        nmbrChar :=nmbrChar +1;
 
         IF (chaine[i]=" ") THEN
             nmbrWord :=nmbrWord +1;
@@ -24,5 +24,6 @@ BEGIN
     write("number of characters :" nmbrChar)
     write("number of words :" nmbrWord)
     write("number of vowels:" nmbrVowels)
+    
 
 END
