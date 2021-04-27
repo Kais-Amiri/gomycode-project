@@ -22,18 +22,19 @@ END
 
 
 
+/*-----  question 1 ---------*/
 
 /*----------procedure to calculate dot product-----------------*/
 PROCEDURE dot_Product_Procedure (tab1, tab2 : ARRAY_OF FLOAT [3])
 VAR
     i: INTEGER : =0
-    dot_Product : FLOAT := 0.00 ;
+    ps : FLOAT := 0.00 ;
 BEGIN
     FOR i FROM 0 TO 2 STEP 1  DO
-        dot_Product := dot_Product + tab1[i]*tab2[i];
+        ps := ps + tab1[i]*tab2[i];
     END_FOR
 
-    write("Dot product = ", dot_Product);
+    write("Dot product = ", ps);
 
 
 END
@@ -61,8 +62,18 @@ END
 
 ALGORITHM calDotProduct
 VAR
-    vec1 , vec2 : ARRAY_OF FLOAT [3]
+    Ensemble_vec1 , Ensemble_vec2 : ARRAY_OF ARRAY_OF FLOAT[3] [50] // tableau de tableau 
+    i, nombre_Vec1, nombre_Vec2: INTEGER :=0 
 BEGIN
+
+    REPEAT
+        write("Give a vector :");
+        read(Ensemble_vec1[i]);
+        i := i+1 ;
+    UNTIL (i = <1 && i > 50)
+
+    nombre_Vec1 := i ;
+
     vec1 := vectorComponent();
     vec2 := vectorComponent();
 
