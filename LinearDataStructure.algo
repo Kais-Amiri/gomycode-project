@@ -3,26 +3,37 @@
 
 ALGORITHM sumDistinctElement
 VAR
-    Set1, Set2, maxTab, minTab : ARRAY_OF FLOAT[50];
-    sum: float :=0;
-    i: integer:=0;
+    Set1, Set2 : ARRAY_OF FLOAT[50]
+    sum: float :=0
+    i, j: integer:=0
+    unique : BOOLEAN :=false
 BEGIN
-    IF (Set1.length < Set2.length) THEN
-        maxTab := Set2;
-        minTab := Set1;
-    ELSE
-        maxTab := Set1;
-        minTab := Set2;
+    
 
-    END_IF
-
-    FOR i FROM 0 TO maxTab.length STEP 1  DO
-        FOR j FROM 0 TO minTab.length STEP 1  DO
-            IF (maxTab[i]<>minTab[j]) THEN
-                sum:= sum + maxTab[i];
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        FOR j FROM 0 TO set2.length STEP 1  DO
+            IF (set1[i]<>set2[j]) THEN
+                unique := true ;
+            ELSE unique := false; break;
             END_IF
         END_FOR
-    
+    IF (unique = true) THEN
+        sum := sum + set1[i]
+    END_IF
+    END_FOR
+
+    unique := false ;
+
+    FOR i FROM 0 TO set2.length-1 STEP 1  DO
+        FOR j FROM 0 TO set1.length STEP 1  DO
+            IF (set2[i]<>set1[j]) THEN
+                unique := true ;
+            ELSE unique := false; break;
+            END_IF
+        END_FOR
+    IF (unique = true) THEN
+        sum := sum + set1[i]
+    END_IF
     END_FOR
 
     write("sum fo distinct element : " sum)
@@ -34,48 +45,43 @@ END
 
 ALGORITHM sumDistinctElement
 VAR
-    Set1, Set2, maxTab, minTab: HASH_TABLE<integer,integer>
+    Set1, Set2 : ARRAY_OF FLOAT[];
+    hash_Array: HASH_TABLE<INTEGER,FLOAT>
     sum : integer :=0
+    count : INTEGER : =1
 
 BEGIN
- IF (Set1.length < Set2.length) THEN
-        maxTab := Set2;
-        minTab := Set1;
+
+hash_Array := set1 ;
+FOR i FROM 0 TO set2.length-1 STEP 1  DO
+    IF (hash_Array.lookup(Set2[i])= true) THEN
+        hash_Array.insert(set2[i], count+1)
     ELSE
-        maxTab := Set1;
-        minTab := Set2;
-
-FOR i FROM 0 TO maxTab.length STEP 1  DO
-    WHILE (minTab.lookup(maxTab[i])==true && minTab.lookup(maxTab[i])<> undefined) DO
-     sum := sum + maxTab[i]; 
-
-     END_WHILE
+        hash_Array.insert(set2[i], count)
+    END_IF
 END_FOR
-write (sum);
-  
+    
+FOR i FROM 0 TO hash_Array.length STEP 1  DO
+    if( count = 1)
+
+    sum := sum + hash_Array[i];
+END_FOR
 END
 
 /*----------------------------------- problem- 2 : using array------------------------------------------------*/
 
 ALGORITHM sumSharedElement
 VAR
-    Set1, Set2, maxTab, minTab : ARRAY_OF FLOAT[50];
+    Set1, Set2: ARRAY_OF FLOAT[50];
     sum: float :=0;
     i: integer:=0;
 BEGIN
-    IF (Set1.length < Set2.length) THEN
-        maxTab := Set2;
-        minTab := Set1;
-    ELSE
-        maxTab := Set1;
-        minTab := Set2;
+    
 
-    END_IF
-
-    FOR i FROM 0 TO maxTab.length STEP 1  DO
-        FOR j FROM 0 TO minTab.length STEP 1  DO
-            IF (maxTab[i]==minTab[j]) THEN
-                sum:= sum + maxTab[i];
+    FOR i FROM 0 TO Set1.length STEP 1  DO
+        FOR j FROM 0 TO set2.length STEP 1  DO
+            IF (set1[i]==set2[j]) THEN
+                sum:= sum + set1[i]*2;
             END_IF
         END_FOR
     
@@ -89,24 +95,26 @@ END
 
 ALGORITHM sumDistinctElement
 VAR
-    Set1, Set2, maxTab, minTab: HASH_TABLE<integer,integer>
+    Set1, Set2 : ARRAY_OF FLOAT[];
+    hash_Array: HASH_TABLE<INTEGER,FLOAT>
     sum : integer :=0
+    count : INTEGER : =1
 
 BEGIN
- IF (Set1.length < Set2.length) THEN
-        maxTab := Set2;
-        minTab := Set1;
+
+hash_Array := set1 ;
+FOR i FROM 0 TO set2.length-1 STEP 1  DO
+    IF (hash_Array.lookup(Set2[i])= true) THEN
+        hash_Array.insert(set2[i], count+1)
     ELSE
-        maxTab := Set1;
-        minTab := Set2;
-
-FOR i FROM 0 TO maxTab.length STEP 1  DO
-    WHILE (minTab.lookup(maxTab[i])==false && minTab.lookup(maxTab[i])<> undefined) DO
-     sum := sum + maxTab[i]; 
-
-     END_WHILE
+        hash_Array.insert(set2[i], count)
+    END_IF
 END_FOR
-write (sum);
-  
+    
+FOR i FROM 0 TO hash_Array.length STEP 1  DO
+    if( count > 1)
+
+    sum := sum + hash_Array[i];
+END_FOR
 END
 
