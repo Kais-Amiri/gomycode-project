@@ -62,7 +62,7 @@ FOR i FROM 0 TO set2.length-1 STEP 1  DO
 END_FOR
     
 FOR i FROM 0 TO hash_Array.length STEP 1  DO
-    if( count = 1)
+    if( count > 1)
 
     sum := sum + hash_Array[i];
 END_FOR
@@ -112,7 +112,7 @@ FOR i FROM 0 TO set2.length-1 STEP 1  DO
 END_FOR
     
 FOR i FROM 0 TO hash_Array.length STEP 1  DO
-    if( count > 1)
+    if( count = 1)
 
     sum := sum + hash_Array[i];
 END_FOR
