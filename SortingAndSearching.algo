@@ -1,0 +1,15 @@
+PROCEDURE insertionSortCards (VAR tab : ARRAY_OF integer[n], n: INTEGER // number of cards)
+VAR
+    i, pos, card : INTEGER
+
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        card := tab[i];
+        pos :=i;
+        WHILE (pos > 0 && tab[pos-1] > tab[pos]) DO
+            tab[pos] := tab[pos-1];
+            pos := pos -1;
+        END_WHILE
+        tab[pos] := card;
+    END_FOR
+END
